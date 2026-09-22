@@ -1,3 +1,8 @@
 spring:
   application:
     name: weatherapi
+
+  weather:
+    api:
+      key: "Y6LUTYYWZC3SMLDJW2529ZHGG"
+      url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
