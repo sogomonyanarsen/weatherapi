@@ -1,8 +1,12 @@
 spring:
   application:
     name: weatherapi
+  cache:
+    type: redis
+    redis:
+      time-to-live: 12h
 
-  weather:
-    api:
-      key: "Y6LUTYYWZC3SMLDJW2529ZHGG"
-      url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
+weather:
+  api:
+    key: "Y6LUTYYWZC3SMLDJW2529ZHGG"
+    url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"

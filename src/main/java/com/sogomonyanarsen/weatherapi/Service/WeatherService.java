@@ -1,6 +1,7 @@
 package com.sogomonyanarsen.weatherapi.Service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -8,7 +9,7 @@ import org.springframework.web.client.RestClient;
 public class WeatherService {
     private final RestClient restClient;
 
-    @Value("${spring.weather.api.key}")
+    @Value("${weather.api.key}")
     private String apiKey;
 
     @Value("${weather.api.url}")
@@ -18,8 +19,9 @@ public class WeatherService {
         this.restClient = RestClient.builder().build();
     }
 
+    @Cacheable(value = "weatherCache", key = "#city")
     public String getLiveWeather(String city) {
-        String fullUrl = apiUrl + "/" + "?key=" + apiKey;
+        String fullUrl = apiUrl + "/" + city + "?key=" + apiKey;
         return restClient.get()
                 .uri(fullUrl)
                 .retrieve()
