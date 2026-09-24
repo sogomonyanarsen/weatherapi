@@ -5,8 +5,11 @@ spring:
     type: redis
     redis:
       time-to-live: 12h
+  jackson:
+    serialization:
+      indent_output: true
 
 weather:
   api:
-    key: "Y6LUTYYWZC3SMLDJW2529ZHGG"
+    key: ${WEATHER_API_KEY:YOUR_KEY_HERE}
     url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
